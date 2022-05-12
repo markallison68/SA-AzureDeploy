@@ -16,7 +16,7 @@ stages:
           - task: AzureResourceManagerTemplateDeployment@3
             inputs:
               deploymentScope: 'Resource Group'
-              azureResourceManagerConnection: 'devsecops_bench-sandbox-000-rg-000-connection'
+              azureResourceManagerConnection: 'AzureConnection'
               subscriptionId: '272192c4-fcb8-4863-9cbf-a00913d42b07'
               action: 'Create Or Update Resource Group'
               resourceGroupName: 'devsecops_bench-sandbox-000-rg-000'
@@ -31,7 +31,7 @@ stages:
               script: 'Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease -Force -Scope CurrentUser'
           - task: AzurePowerShell@5
             inputs:
-              azureSubscription: 'devsecops_bench-sandbox-000-rg-000-connection'
+              azureSubscription: 'AzureConnection'
               ScriptType: 'InlineScript'
               Inline: |
                 $Parameters = @{
@@ -46,9 +46,9 @@ stages:
           - task: AzurePowerShell@5
             displayName: "Check for deletion"
             inputs:
-              azureSubscription: 'devsecops_bench-sandbox-000-rg-000-connection'
+              azureSubscription: 'AzureConnection'
               ScriptType: 'FilePath'
               ScriptPath: '$(Build.SourcesDirectory)/Tests/CheckForDeletion.ps1'
               ScriptArguments: '-ResourceGroup devsecops_bench-sandbox-000-rg-000'
-              FailOnStandardError: false
+              FailOnStandardError: true
               azurePowerShellVersion: 'LatestVersion'
