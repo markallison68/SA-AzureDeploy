@@ -31,7 +31,7 @@ stages:
               script: 'Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease -Force -Scope CurrentUser'
           - task: AzurePowerShell@5
             inputs:
-              azureSubscription: 'AzureConnection'
+              azureSubscription: 'Microsoft Azure Enterprise'
               ScriptType: 'InlineScript'
               Inline: |
                 $Parameters = @{
@@ -46,7 +46,7 @@ stages:
           - task: AzurePowerShell@5
             displayName: "Check for deletion"
             inputs:
-              azureSubscription: 'AzureConnection'
+              azureSubscription: 'Microsoft Azure Enterprise'
               ScriptType: 'FilePath'
               ScriptPath: '$(Build.SourcesDirectory)/Tests/CheckForDeletion.ps1'
               ScriptArguments: '-ResourceGroup devsecops_bench-sandbox-000-rg-000'
