@@ -50,5 +50,5 @@ stages:
               ScriptType: 'FilePath'
               ScriptPath: '$(Build.SourcesDirectory)/Tests/CheckForDeletion.ps1'
               ScriptArguments: '-ResourceGroup devsecops_bench-sandbox-000-rg-000'
-              FailOnStandardError: true
+              FailOnStandardError: false
               azurePowerShellVersion: 'LatestVersion'
