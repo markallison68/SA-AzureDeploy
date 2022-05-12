@@ -43,12 +43,4 @@ stages:
                 $Result = Get-AzResourceGroupDeploymentWhatIfResult @Parameters
                 $Result
               azurePowerShellVersion: 'LatestVersion'
-          - task: AzurePowerShell@5
-            displayName: "Check for deletion"
-            inputs:
-              azureSubscription: 'devsecops_bench-sandbox-000-rg-000-connection'
-              ScriptType: 'FilePath'
-              ScriptPath: '$(Build.SourcesDirectory)/Tests/CheckForDeletion.ps1'
-              ScriptArguments: '-ResourceGroup devsecops_bench-sandbox-000-rg-000'
-              FailOnStandardError: true
-              azurePowerShellVersion: 'LatestVersion'
+          
