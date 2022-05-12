@@ -31,6 +31,7 @@ stages:
               script: 'Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease -Force -Scope CurrentUser'
           - task: AzurePowerShell@5
             inputs:
+              azureSubscription: 'devsecops_bench-sandbox-000-rg-000-connection'
               ScriptType: 'InlineScript'
               Inline: |
                 $Parameters = @{
